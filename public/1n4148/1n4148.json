@@ -1,0 +1,25 @@
+{
+  "list": [
+    {
+      "name": "ON Semiconductor",
+      "directory": "on",
+      "thumbnail": "1N914-D-1801484-page-001.jpg",
+      "imagePrefix": "1N914-D-1801484-page-00",
+      "imagePostfix": ".jpg"
+    },
+    {
+      "name": "VISHAY",
+      "directory": "vishay",
+      "thumbnail": "1n4148-page-001.jpg",
+      "imagePrefix": "1n4148-page-00",
+      "imagePostfix": ".jpg"
+    },
+    {
+      "name": "Diodes Incorporated",
+      "directory": "ds",
+      "thumbnail": "ds12019-page-001.jpg",
+      "imagePrefix": "ds12019-page-00",
+      "imagePostfix": ".jpg"
+    }
+  ]
+}

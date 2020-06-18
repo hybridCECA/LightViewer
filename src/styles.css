@@ -1,0 +1,60 @@
+img {
+  max-width: 100%;
+  pointer-events: all;
+}
+
+.buttonArea {
+  fill: black;
+  fill-opacity: 0.5;
+}
+
+.lineIcon {
+  stroke-linejoin: round;
+  stroke-width: 3;
+  stroke: white;
+  fill: none;
+}
+
+.bar {
+  padding: 0.3em;
+}
+
+.barElement {
+  background: gray;
+  color: white;
+  font: 20px "Century Gothic", Futura, sans-serif;
+}
+
+.barButton {
+  border: 0.1em solid white;
+  border-radius: 0.3em;
+}
+
+.listElement {
+  padding: 0.5em;
+}
+
+.listElement:hover {
+  background: whitesmoke;
+  cursor: pointer;
+}
+
+.listText {
+  font: 20px "Century Gothic", Futura, sans-serif;
+  text-decoration: underline;
+}
+
+.listSubtext {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0;
+}
+
+.thumbnail {
+  max-width: 10em;
+}
+
+.listCol {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 0.5em;
+}

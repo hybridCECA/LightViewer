@@ -1,0 +1,24 @@
+{
+  "list": [
+    {
+      "name": "Chapter 1",
+      "directory": "Chapter1",
+      "thumbnail": "1.jpg"
+    },
+    {
+      "name": "Chapter 2",
+      "directory": "Chapter2",
+      "thumbnail": "1.jpg"
+    },
+    {
+      "name": "Chapter 3",
+      "directory": "Chapter3",
+      "thumbnail": "1.jpg"
+    },
+    {
+      "name": "Chapter 4",
+      "directory": "Chapter4",
+      "thumbnail": "1.jpg"
+    }
+  ]
+}

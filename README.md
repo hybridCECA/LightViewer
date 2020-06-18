@@ -1,2 +1,0 @@
-# LightViewer
-Created with CodeSandbox

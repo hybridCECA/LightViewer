@@ -1,0 +1,21 @@
+{
+  "list": [
+    {
+      "name": "1N4148 Datasheets",
+      "directory": "1n4148",
+      "imagePrefix": "",
+      "imagePostfix": ".jpg",
+      "subtext": "Datasheets for the popular diode",
+      "thumbnail": "1n4148.jpg",
+      "subgroupListFile": "1n4148.json"
+    },
+    {
+      "name": "Linear Algebra Notes",
+      "directory": "linear",
+      "imagePrefix": "",
+      "imagePostfix": ".jpg",
+      "thumbnail": "thumb.png",
+      "subtext": "By UC Davis Mathematics"
+    }
+  ]
+}

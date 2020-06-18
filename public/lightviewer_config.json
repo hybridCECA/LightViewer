@@ -1,0 +1,8 @@
+{
+  "groupListFile": "group.json",
+  "buttonConfig": {
+    "delayTime": 100,
+    "buttonWidth": 0.2,
+    "triangleLength": 15
+  }
+}
