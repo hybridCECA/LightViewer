@@ -35,6 +35,8 @@ This is the main configuration file and should be in the public folder.
   }
 }
 ```
+# Declaration Files
+Declaration files allow for customization of groups and subgroups. They allow both types of groups to be rearranged in order without affecting links.
 
 **group_list.json**
 
