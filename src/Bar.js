@@ -1,65 +1,65 @@
 import React from "react";
 
-export default class Bar extends React.Component {
-  render() {
-    if (!this.props.show) {
-      return null;
-    }
+const Bar = (props) => {
+  if (!props.show) {
+    return null;
+  }
 
-    // Conditionally set subgroup bar
-    // Set group to button on image view and span on subgroup view
-    let subgroupBar, group;
-    if (this.props.showSubgroup) {
-      subgroupBar = (
-        <div className="bar barElement">
-          <button
-            className="barButton barElement"
-            onClick={() => this.props.changeSubgroup(-1, true)}
-          >
-            &lt;
-          </button>
-          <span> </span>
-          <button
-            className="barButton barElement"
-            onClick={this.props.toggleThumbnailView}
-          >
-            {this.props.subgroup}
-          </button>
-          <span> </span>
-          <button
-            className="barButton barElement"
-            onClick={() => this.props.changeSubgroup(1, true)}
-          >
-            &gt;
-          </button>
-        </div>
-      );
-      group = (
+  // Conditionally set subgroup bar
+  // Set group to button on image view and span on subgroup view
+  let subgroupBar, group;
+  if (props.showSubgroup) {
+    subgroupBar = (
+      <div className="bar barElement">
         <button
           className="barButton barElement"
-          onClick={() => this.props.back(1)}
+          onClick={() => props.changeSubgroup(-1, true)}
         >
-          {this.props.group}
+          &lt;
         </button>
-      );
-    } else {
-      group = <span>{this.props.group}</span>;
-    }
-
-    return (
-      <div>
-        <div className="bar barElement">
-          <button
-            className="barButton barElement"
-            onClick={() => this.props.back(0)}
-          >
-            ≡
-          </button>
-          <span> </span>
-          {group}
-        </div>
-        {subgroupBar}
+        <span> </span>
+        <button
+          className="barButton barElement"
+          onClick={props.toggleThumbnailView}
+        >
+          {props.subgroup}
+        </button>
+        <span> </span>
+        <button
+          className="barButton barElement"
+          onClick={() => props.changeSubgroup(1, true)}
+        >
+          &gt;
+        </button>
       </div>
     );
+    group = (
+      <button
+        className="barButton barElement"
+        onClick={() => props.back(1)}
+      >
+        {props.group}
+      </button>
+    );
+  } else {
+    group = <span>{props.group}</span>;
   }
-}
+
+  return (
+    <div>
+      <div className="bar barElement">
+        <button
+          className="barButton barElement"
+          onClick={() => props.back(0)}
+        >
+          ≡
+        </button>
+        <span> </span>
+        {group}
+      </div>
+      {subgroupBar}
+    </div>
+  );
+};
+
+export default Bar;

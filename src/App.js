@@ -316,7 +316,7 @@ export default class App extends React.Component {
 
     // Returns bar and content
     return (
-      <div>
+      <>
         <Bar
           show={bar}
           showSubgroup={subgroupBar}
@@ -327,7 +327,7 @@ export default class App extends React.Component {
           toggleThumbnailView={this.toggleThumbnailView}
         />
         {content}
-      </div>
+      </>
     );
   }
 }

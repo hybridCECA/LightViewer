@@ -1,44 +1,43 @@
 import React from "react";
 
+// Default config
 let DELAY_TIME = 100;
 let BUTTON_WIDTH_FRACTION = 1 / 5;
 let TRIANGLE_LENGTH = 15;
 
 // Dynamically drawn left and right arrow
 // Draws a right triangle missing hypotenuse
-class Arrow extends React.Component {
-  render() {
-    let x = new Array(3);
-    let y = new Array(3);
+const Arrow = (props) => {
+  let x = new Array(3);
+  let y = new Array(3);
 
-    x[0] = TRIANGLE_LENGTH;
-    y[0] = TRIANGLE_LENGTH;
+  x[0] = TRIANGLE_LENGTH;
+  y[0] = TRIANGLE_LENGTH;
 
-    x[1] = TRIANGLE_LENGTH * 2;
-    y[1] = TRIANGLE_LENGTH * 2;
+  x[1] = TRIANGLE_LENGTH * 2;
+  y[1] = TRIANGLE_LENGTH * 2;
 
-    x[2] = TRIANGLE_LENGTH;
-    y[2] = TRIANGLE_LENGTH * 3;
+  x[2] = TRIANGLE_LENGTH;
+  y[2] = TRIANGLE_LENGTH * 3;
 
-    return (
-      <svg
-        style={{
-          position: "absolute",
-          left: `${this.props.x - TRIANGLE_LENGTH * 1.5}px`,
-          top: `${this.props.y - TRIANGLE_LENGTH * 2}px`
-        }}
-        transform={this.props.invert ? "scale(-1,1)" : "scale(1,1)"}
-        height={TRIANGLE_LENGTH * 4}
-        width={TRIANGLE_LENGTH * 3}
-      >
-        <polyline
-          className="lineIcon"
-          points={`${x[0]},${y[0]} ${x[1]},${y[1]} ${x[2]},${y[2]}`}
-        />
-      </svg>
-    );
-  }
-}
+  return (
+    <svg
+      style={{
+        position: "absolute",
+        left: `${props.x - TRIANGLE_LENGTH * 1.5}px`,
+        top: `${props.y - TRIANGLE_LENGTH * 2}px`
+      }}
+      transform={props.invert ? "scale(-1,1)" : "scale(1,1)"}
+      height={TRIANGLE_LENGTH * 4}
+      width={TRIANGLE_LENGTH * 3}
+    >
+      <polyline
+        className="lineIcon"
+        points={`${x[0]},${y[0]} ${x[1]},${y[1]} ${x[2]},${y[2]}`}
+      />
+    </svg>
+  );
+};
 
 // Gray button area animation
 // Dynamically shown and positioned
@@ -80,14 +79,9 @@ export default class ImgView extends React.Component {
   constructor(props) {
     super(props);
 
-    if (this.props.buttonConfig.delayTime != null)
-      DELAY_TIME = this.props.buttonConfig.delayTime;
-
-    if (this.props.buttonConfig.buttonWidth != null)
-      BUTTON_WIDTH_FRACTION = this.props.buttonConfig.buttonWidth;
-
-    if (this.props.buttonConfig.triangleLength != null)
-      TRIANGLE_LENGTH = this.props.buttonConfig.triangleLength;
+    DELAY_TIME = this.props.buttonConfig.delayTime || DELAY_TIME;
+    BUTTON_WIDTH_FRACTION = this.props.buttonConfig.buttonWidth || BUTTON_WIDTH_FRACTION;
+    TRIANGLE_LENGTH = this.props.buttonConfig.triangleLength || TRIANGLE_LENGTH;
 
     // Initialize state
     this.state = {
@@ -106,32 +100,32 @@ export default class ImgView extends React.Component {
 
   // Handle image click
   onImageClick(event) {
-    const btnWidth = this.imgRef.current.width * BUTTON_WIDTH_FRACTION;
+    const btnWidth = event.target.clientWidth * BUTTON_WIDTH_FRACTION;
 
     // If clicked on the far left or right, change image
     let change = event.pageX < btnWidth ? -1 : 0;
-    change = event.pageX > this.imgRef.current.width - btnWidth ? 1 : change;
+    change = event.pageX > event.target.clientWidth - btnWidth ? 1 : change;
 
     if (change !== 0) {
       if (this.props.changeImage(change)) {
-        this.showAnimation(change);
+        this.showAnimation(event.target, change);
       }
     }
   }
 
   // Displays button animation on the right or left
-  showAnimation(direction) {
-    const btnWidth = this.imgRef.current.width * BUTTON_WIDTH_FRACTION;
+  showAnimation(box, direction) {
+    const btnWidth = box.clientWidth * BUTTON_WIDTH_FRACTION;
 
     // Set coordinates for animation
     let coordinates = {
-      x: this.imgRef.current.offsetLeft,
-      y: this.imgRef.current.offsetTop,
+      x: box.offsetLeft,
+      y: box.offsetTop,
       w: btnWidth,
-      h: this.imgRef.current.height
+      h: box.clientHeight
     };
     if (direction === 1) {
-      coordinates.x += this.imgRef.current.width - btnWidth;
+      coordinates.x += box.clientWidth - btnWidth;
     }
     this.setState({
       areaShow: true,
@@ -150,11 +144,13 @@ export default class ImgView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div 
+        className="imgBox"
+        onClick={this.onImageClick}
+      >
         <img
           src={this.props.getSource()}
           alt={this.props.source}
-          onClick={this.onImageClick}
           ref={this.imgRef}
         />
         <ButtonArea
